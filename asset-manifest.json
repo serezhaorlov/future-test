@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/future-test/static/css/main.8328e96d.chunk.css",
+    "main.js": "/future-test/static/js/main.b06b33d8.chunk.js",
+    "main.js.map": "/future-test/static/js/main.b06b33d8.chunk.js.map",
+    "runtime-main.js": "/future-test/static/js/runtime-main.48fc6414.js",
+    "runtime-main.js.map": "/future-test/static/js/runtime-main.48fc6414.js.map",
+    "static/js/2.3433a0a4.chunk.js": "/future-test/static/js/2.3433a0a4.chunk.js",
+    "static/js/2.3433a0a4.chunk.js.map": "/future-test/static/js/2.3433a0a4.chunk.js.map",
+    "static/js/3.fd5c23a3.chunk.js": "/future-test/static/js/3.fd5c23a3.chunk.js",
+    "static/js/3.fd5c23a3.chunk.js.map": "/future-test/static/js/3.fd5c23a3.chunk.js.map",
+    "index.html": "/future-test/index.html",
+    "static/css/main.8328e96d.chunk.css.map": "/future-test/static/css/main.8328e96d.chunk.css.map",
+    "static/js/2.3433a0a4.chunk.js.LICENSE.txt": "/future-test/static/js/2.3433a0a4.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/future-test/static/media/closeIcon.b9c42c3d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.48fc6414.js",
+    "static/js/2.3433a0a4.chunk.js",
+    "static/css/main.8328e96d.chunk.css",
+    "static/js/main.b06b33d8.chunk.js"
+  ]
+}
