@@ -1,0 +1,7 @@
+.table__profile{
+    display: flex;
+    align-self: center;
+    align-items: center;
+    margin: 0 0 20px;
+    width: 100%;
+}

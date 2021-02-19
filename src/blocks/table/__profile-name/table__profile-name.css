@@ -1,0 +1,7 @@
+.table__profile-name{
+    font-size: 24px;
+    margin: 10px 20px;
+    overflow: hidden;
+    white-space: nowrap;  
+    text-overflow: ellipsis; 
+}

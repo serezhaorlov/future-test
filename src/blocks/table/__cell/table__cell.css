@@ -1,0 +1,8 @@
+.table__cell{
+    display: flex;
+    align-items: center;
+    border: 1px solid grey;
+    width: 270px;
+    padding: 10px 10px;
+    overflow: hidden;
+}

@@ -1,0 +1,11 @@
+.popup__submit-btn{
+    width: 54%;
+    height: 35px;
+
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+.popup__submit-btn:hover{
+    opacity: 0.8;
+}

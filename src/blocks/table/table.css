@@ -1,0 +1,9 @@
+.table{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    padding: 20px 0;
+    width: 90%;
+}

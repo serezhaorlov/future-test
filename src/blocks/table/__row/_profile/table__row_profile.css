@@ -1,0 +1,8 @@
+.table__row_profile{
+    margin: 0;
+    justify-content: unset;
+}
+
+.table__row_profile:first-of-type{
+    margin: 0;
+}

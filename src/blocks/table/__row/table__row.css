@@ -1,0 +1,11 @@
+.table__row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+}
+
+.table__row:first-of-type{
+    margin-bottom: 20px;
+}

@@ -1,13 +1,34 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* page */
+@import url("./blocks/page/page.css");
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* table */
+@import url("./blocks/table/table.css");
+@import url("./blocks/table/__row/table__row.css");
+@import url("./blocks/table/__cell/table__cell.css");
+@import url("./blocks/table/__cell/_profile/table__cell_profile.css");
+@import url("./blocks/table/__label/table__label.css");
+@import url("./blocks/table/__profile/table__profile.css");
+@import url("./blocks/table/__profile/_hidden/table__profile_hidden.css");
+@import url("./blocks/table/__profile-address/table__profile-address.css");
+@import url("./blocks/table/__row/_profile/table__row_profile.css");
+@import url("./blocks/table/__row/_toolbar/table__row_toolbar.css");
+@import url("./blocks/table/__input/table__input.css");
+@import url("./blocks/table/__reset-btn/table__reset-btn.css");
+@import url("./blocks/table/__text/table__text.css");
+@import url("./blocks/table/__text/_description/table__text_description.css");
+
+/* popup */
+@import url("./blocks/popup/popup.css");
+@import url("./blocks/popup/__form/popup__form.css");
+@import url("./blocks/popup/__input/popup__input.css");
+@import url("./blocks/popup/__submit-btn/popup__submit-btn.css");
+@import url("./blocks/popup/__close-btn/popup__close-btn.css");
+@import url("./blocks/popup/_is-open/popup_is-open.css");
+@import url("./blocks/popup/__title/popup__title.css");
+
+/* startscreen */
+@import url("./blocks/startscreen/startscreen.css");
+@import url("./blocks/startscreen/__btn/startscreen__btn.css");
+
+/* loader */
+@import url("./blocks/loader/loader.css");
