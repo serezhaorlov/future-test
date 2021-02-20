@@ -1,0 +1,9 @@
+.pagination__active{
+    font-weight: bold;
+    font-size: 18px;
+    color: grey;
+    margin: 0 5px;
+    outline: none;
+}
+
+

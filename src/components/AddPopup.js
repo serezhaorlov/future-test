@@ -1,7 +1,6 @@
 import React from 'react';
-import Loader from './Loader';
 
-function AddPopup ({ isPopupOpen, handleClosePopup, createNewUser, isLoading, setIsLoading }) {
+function AddPopup ({ isPopupOpen, handleClosePopup, createNewUser }) {
     const [id, setID] = React.useState('')
     const [firstName, setFirstName] = React.useState('')
     const [lastName, setLastName] = React.useState('')

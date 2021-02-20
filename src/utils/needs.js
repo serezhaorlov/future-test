@@ -77,3 +77,56 @@ className="table__profile-index"
 				</div>
 			</div>
 		*/
+
+		/* 
+			<>
+				<div className="table">
+					<TableHeader handleSort={ sorting }/>
+					<Toolbar handleReset={ setText } setText={ setText } text={ text } handleOpenPopup={ handleOpenPopup }/>
+					{isLoading && <Loader />}
+					<TableListItems users={ visibleItems }/>
+				</div>
+				<AddPopup setIsLoading={ setIsLoading } isLoading={ isLoading } isPopupOpen={ isPopupOpen } handleClosePopup={ handleClosePopup } createNewUser={ createNewUser }/>
+			</>
+
+*/
+
+/* import { api } from '../utils/Api';*/
+
+/* 	React.useEffect(() => {
+		
+	}, []); */
+
+	/* 
+	    getUserSmall(){
+        return fetch(this.baseSmall, {
+            method: 'GET',
+            headers: this.headers,
+        })
+        .then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject('error')
+        });
+    }
+	
+    getUserBig(){
+        return fetch(this.baseBig, {
+            method: 'GET',
+            headers: this.headers,
+        })
+        .then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject('error')
+        });
+    }
+	*/
+
+	/* 
+	const A = column === 'id' || column === 'phone'? a[column] : a[column].toLowerCase();
+	const B = column === 'id' || column === 'phone'? b[column] : b[column].toLowerCase();
+			
+	*/

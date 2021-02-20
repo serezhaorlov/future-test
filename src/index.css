@@ -16,7 +16,7 @@
 @import url("./blocks/table/__reset-btn/table__reset-btn.css");
 @import url("./blocks/table/__text/table__text.css");
 @import url("./blocks/table/__text/_description/table__text_description.css");
-
+@import url("./blocks/table/__page-count-one/table__page-count-one.css");
 /* popup */
 @import url("./blocks/popup/popup.css");
 @import url("./blocks/popup/__form/popup__form.css");
@@ -32,3 +32,12 @@
 
 /* loader */
 @import url("./blocks/loader/loader.css");
+@import url("./blocks/loader/__child/loader__child.css");
+
+/* pagination */
+@import url("./blocks/pagination/pagination.css");
+@import url("./blocks/pagination/__pages/pagination__pages.css");
+@import url("./blocks/pagination/__break-me/pagination__break-me.css");
+@import url("./blocks/pagination/__active/pagination__active.css");
+@import url("./blocks/pagination/__page/pagination__page.css");
+@import url("./blocks/pagination/__scroll-btn/pagination__scroll-btn.css");

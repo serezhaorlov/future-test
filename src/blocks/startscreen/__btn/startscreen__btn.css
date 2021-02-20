@@ -1,7 +1,13 @@
-.startscreen__btn{
+.startscreen__btn {
     min-width: 14%;
     height: 35px;
 
     align-self: baseline;
     margin-bottom: 20px;
+}
+
+.startscreen__btn:hover {
+    transition-timing-function:ease-in-out;
+    transition-duration: 0.2s;
+    transform: scale(1.04);
 }

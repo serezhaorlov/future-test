@@ -4,7 +4,7 @@ function Loader(){
     
     return (
         <>
-        <h1 className="loader">Loading...</h1>
+            <div className="loader"><div className="loader__child"></div><div  className="loader__child"></div><div className="loader__child"></div><div className="loader__child"></div></div>
         </>
     )
 }

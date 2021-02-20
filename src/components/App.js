@@ -1,25 +1,32 @@
 import React from 'react';
-/* import { api } from '../utils/Api';
- */import TableHeader from './TableHeader';
-import TableListItems from './TableListItems';
+import Startscreen from './Startscreen';
+import TableHeader from './TableHeader';
 import Toolbar from './Toolbar';
+import TableListItems from './TableListItems';
 import AddPopup from './AddPopup';
 import Loader from './Loader';
-import { smallUsersBase, bigUsersBase } from '../utils/constants'
+import ReactPaginate from 'react-paginate';
+import { api } from '../utils/Api';
+
+const perPage = 50;
+
 function App() {
 
+	const [offset, setOffset] = React.useState(null);
 	const [users, setUsers] = React.useState([]);
 	const [activeColumn, setActiveColumn] = React.useState('');
 	const [direction, setDirection] = React.useState('');
 	const [text, setText] = React.useState('');
 	const [isPopupOpen, setIsPopupOpen] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(false);
-	
-/* 	React.useEffect(() => {
+	const [pageCount, setPageCount] = React.useState(null);
+	console.log(users)
+	const handleDataSet = (url) => {
 		setIsLoading(true);
-		api.getUserSmall()
+		api.getUsers(url)
 		.then((res) => {
 			setUsers(res);
+			setPageCount(Math.ceil(res.length / perPage))
 		})
 		.catch((error) => {
 			console.log(error);
@@ -27,44 +34,17 @@ function App() {
 		.finally(() => {
 			setIsLoading(false);
 		})
-	}, []); */
+	};
 
-	const getUsers = (type) => async () => {
-		setIsLoading(true);
-	
-		let url = ''
-		if (type === 'small') url = smallUsersBase
-		if (type === 'big') url = bigUsersBase
-	
-		try {
-		  const res = await fetch(url)
-		  const data = await res.json()
-		  setUsers(data)
-		} catch (err) {
-			console.log(err);
-		}
-	
-		setIsLoading(false);
-	  }
 
-	const handleOpenPopup = () => {
-		setIsPopupOpen(true)
-	}
-
-	const handleClosePopup = () => {
-		setIsPopupOpen(false)
-	}
 
 	const sorting = (column) => {
-
 		const sortedArray = users.sort(function(a, b){
-			const A = column === 'id' || column === 'phone'? a[column] : a[column].toLowerCase();
-			const B = column === 'id' || column === 'phone'? b[column] : b[column].toLowerCase();
-			
-			if (A < B) return -1
-			if (A > B) return 1
 
-			return 0
+			if (a[column] < b[column]) return -1;
+			if (a[column] > b[column]) return 1;
+
+			return 0;
 		});
 
 		if (activeColumn !== column) {
@@ -81,59 +61,83 @@ function App() {
 
 	const searchData = (data, text) => {
 		if (text.length === 0){
-		  return data
-		}
+		  return data;
+		};
 	
 		return users.filter(elem =>
 			Object.values(elem)
 			  .slice(0, 5)
 			  .some(value => value.toString().toLowerCase().indexOf(text.toLowerCase()) !== -1)
-		)
+		);
 	};
-	const createNewUser = (text) => {
+
+	const createNewUser = (data) => {
+
 		const newUser = {
-			id: text.id,
-			firstName: text.firstName,
-			lastName: text.lastName,
-			email: text.email,
-			phone: text.phone,
+			...data,
 			address: 
 				{
 					streetAddress: 'street',
 					city: 'moscow',
 					state: 'moscow',
 					zip: '114892'
-				}
-				
-			,
+				},
 			description: 'some',
+		};
 
-		}
-
-		const newUsers = [ newUser, ...users ]
+		const newUsers = [ newUser, ...users ];
 
 		setUsers(newUsers);
 	}
-	const visibleItems = searchData(users, text);
-	
+
+	const handleOpenPopup = () => {
+		setIsPopupOpen(true)
+	};
+
+	const handleClosePopup = () => {
+		setIsPopupOpen(false)
+	};
+
+	const visibleItems = searchData(users.slice(offset, offset + perPage), text) //в таком сетапе у меня при нажатии на кнопку некст страницы рендерится каждый раз новый массив
+	//а мне нужно по сути сделать формулу?? которая мне будет вырезать 50 элементов из массива, и вставлять следующие 50
+	const handlePageClick = (e) => {
+		const selectedPage = e.selected;
+		setOffset(selectedPage +1);
+	};
+
+	console.log(visibleItems.length);
+
 	return (
 		<>
-		{users.length === 0 && (
+		{visibleItems.length === 0 && (
 			<>
-			<div className="startscreen">
-				<button className="startscreen__btn" onClick={getUsers('small')}>Load small users base</button>
-				<button className="startscreen__btn" onClick={getUsers('big')}>Load big users base</button>
-			</div>
-			{isLoading && <Loader />}
+				<Startscreen handleDataSet={ handleDataSet }/>
+				{isLoading && <Loader />}
 			</>
 		)}
-		{users.length !== 0 && (
+		{visibleItems.length !== 0 && (
 			<>
 				<div className="table">
 					<TableHeader handleSort={ sorting }/>
 					<Toolbar handleReset={ setText } setText={ setText } text={ text } handleOpenPopup={ handleOpenPopup }/>
 					<TableListItems users={ visibleItems }/>
+					{ pageCount === 1 ? (<p className="table__page-count-one">{pageCount}</p>) : (<ReactPaginate
+						previousLabel={"prev"}
+						nextLabel={"next"}
+						breakLabel={"..."}
+						breakClassName={"pagination__break-me"}
+						pageCount={pageCount}
+						marginPagesDisplayed={2}
+						pageRangeDisplayed={5}
+						onPageChange={ handlePageClick }
+						containerClassName={"pagination"}
+						activeClassName={"pagination__active"}
+						pageClassName={"pagination__page"}
+						nextClassName={"pagination__scroll-btn"}
+						previousClassName={"pagination__scroll-btn"}
+					/>)}
 				</div>
+
 				<AddPopup setIsLoading={ setIsLoading } isLoading={ isLoading } isPopupOpen={ isPopupOpen } handleClosePopup={ handleClosePopup } createNewUser={ createNewUser }/>
 			</>
 		)}
@@ -143,17 +147,4 @@ function App() {
 
 export default App;
 
-//пагинация, разделение объема данных
-
-/* 
-			<>
-				<div className="table">
-					<TableHeader handleSort={ sorting }/>
-					<Toolbar handleReset={ setText } setText={ setText } text={ text } handleOpenPopup={ handleOpenPopup }/>
-					{isLoading && <Loader />}
-					<TableListItems users={ visibleItems }/>
-				</div>
-				<AddPopup setIsLoading={ setIsLoading } isLoading={ isLoading } isPopupOpen={ isPopupOpen } handleClosePopup={ handleClosePopup } createNewUser={ createNewUser }/>
-			</>
-
-*/
+//пагинация

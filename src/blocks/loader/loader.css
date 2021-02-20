@@ -1,3 +1,16 @@
 .loader{
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
     align-self: center;
+}
+
+@keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
 }
