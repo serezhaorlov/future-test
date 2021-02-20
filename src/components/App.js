@@ -8,11 +8,10 @@ import Loader from './Loader';
 import ReactPaginate from 'react-paginate';
 import { api } from '../utils/Api';
 
-const perPage = 50;
 
 function App() {
 
-	const [offset, setOffset] = React.useState(null);
+	const [activePage, setActivePage] = React.useState(1);
 	const [users, setUsers] = React.useState([]);
 	const [activeColumn, setActiveColumn] = React.useState('');
 	const [direction, setDirection] = React.useState('');
@@ -20,7 +19,12 @@ function App() {
 	const [isPopupOpen, setIsPopupOpen] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [pageCount, setPageCount] = React.useState(null);
-	console.log(users)
+	const [perPage] = React.useState(50);
+
+	const indexOfLastTodo  = activePage * perPage;
+	const indexOfFirstTodo = indexOfLastTodo - perPage;
+	const currentUsers = users.slice( indexOfFirstTodo, indexOfLastTodo );
+
 	const handleDataSet = (url) => {
 		setIsLoading(true);
 		api.getUsers(url)
@@ -36,17 +40,13 @@ function App() {
 		})
 	};
 
-
-
 	const sorting = (column) => {
 		const sortedArray = users.sort(function(a, b){
-
 			if (a[column] < b[column]) return -1;
 			if (a[column] > b[column]) return 1;
 
 			return 0;
 		});
-
 		if (activeColumn !== column) {
 			setActiveColumn(column);
 			setUsers(sortedArray);
@@ -72,7 +72,6 @@ function App() {
 	};
 
 	const createNewUser = (data) => {
-
 		const newUser = {
 			...data,
 			address: 
@@ -86,7 +85,6 @@ function App() {
 		};
 
 		const newUsers = [ newUser, ...users ];
-
 		setUsers(newUsers);
 	}
 
@@ -98,27 +96,25 @@ function App() {
 		setIsPopupOpen(false)
 	};
 
-	const visibleItems = searchData(users.slice(offset, offset + perPage), text) //в таком сетапе у меня при нажатии на кнопку некст страницы рендерится каждый раз новый массив
-	//а мне нужно по сути сделать формулу?? которая мне будет вырезать 50 элементов из массива, и вставлять следующие 50
+	const visibleItems = searchData(currentUsers, text);
+
 	const handlePageClick = (e) => {
 		const selectedPage = e.selected;
-		setOffset(selectedPage +1);
+		setActivePage(selectedPage +1);
 	};
-
-	console.log(visibleItems.length);
 
 	return (
 		<>
-		{visibleItems.length === 0 && (
+		{users.length === 0 && (
 			<>
 				<Startscreen handleDataSet={ handleDataSet }/>
 				{isLoading && <Loader />}
 			</>
 		)}
-		{visibleItems.length !== 0 && (
+		{users.length !== 0 && (
 			<>
 				<div className="table">
-					<TableHeader handleSort={ sorting }/>
+					<TableHeader handleSort={ sorting } direction={ direction }/>
 					<Toolbar handleReset={ setText } setText={ setText } text={ text } handleOpenPopup={ handleOpenPopup }/>
 					<TableListItems users={ visibleItems }/>
 					{ pageCount === 1 ? (<p className="table__page-count-one">{pageCount}</p>) : (<ReactPaginate

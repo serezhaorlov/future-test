@@ -17,6 +17,8 @@
 @import url("./blocks/table/__text/table__text.css");
 @import url("./blocks/table/__text/_description/table__text_description.css");
 @import url("./blocks/table/__page-count-one/table__page-count-one.css");
+@import url("./blocks/table/__arrow/table__arrow.css");
+
 /* popup */
 @import url("./blocks/popup/popup.css");
 @import url("./blocks/popup/__form/popup__form.css");
