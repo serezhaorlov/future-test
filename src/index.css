@@ -1,6 +1,22 @@
 /* page */
 @import url("./blocks/page/page.css");
 
+/* startscreen */
+@import url("./blocks/startscreen/startscreen.css");
+@import url("./blocks/startscreen/__btn/startscreen__btn.css");
+
+/* loader */
+@import url("./blocks/loader/loader.css");
+@import url("./blocks/loader/__child/loader__child.css");
+
+/* pagination */
+@import url("./blocks/pagination/pagination.css");
+@import url("./blocks/pagination/__pages/pagination__pages.css");
+@import url("./blocks/pagination/__break-me/pagination__break-me.css");
+@import url("./blocks/pagination/__active/pagination__active.css");
+@import url("./blocks/pagination/__page/pagination__page.css");
+@import url("./blocks/pagination/__scroll-btn/pagination__scroll-btn.css");
+
 /* table */
 @import url("./blocks/table/table.css");
 @import url("./blocks/table/__row/table__row.css");
@@ -27,19 +43,3 @@
 @import url("./blocks/popup/__close-btn/popup__close-btn.css");
 @import url("./blocks/popup/_is-open/popup_is-open.css");
 @import url("./blocks/popup/__title/popup__title.css");
-
-/* startscreen */
-@import url("./blocks/startscreen/startscreen.css");
-@import url("./blocks/startscreen/__btn/startscreen__btn.css");
-
-/* loader */
-@import url("./blocks/loader/loader.css");
-@import url("./blocks/loader/__child/loader__child.css");
-
-/* pagination */
-@import url("./blocks/pagination/pagination.css");
-@import url("./blocks/pagination/__pages/pagination__pages.css");
-@import url("./blocks/pagination/__break-me/pagination__break-me.css");
-@import url("./blocks/pagination/__active/pagination__active.css");
-@import url("./blocks/pagination/__page/pagination__page.css");
-@import url("./blocks/pagination/__scroll-btn/pagination__scroll-btn.css");

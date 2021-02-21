@@ -21,9 +21,9 @@ function App() {
 	const [pageCount, setPageCount] = React.useState(null);
 	const [perPage] = React.useState(50);
 
-	const indexOfLastTodo  = activePage * perPage;
-	const indexOfFirstTodo = indexOfLastTodo - perPage;
-	const currentUsers = users.slice( indexOfFirstTodo, indexOfLastTodo );
+	const indexOfLastUser  = activePage * perPage; /* 1 * 50 = 50; 2 * 50 = 100;*/
+	const indexOfFirstUser = indexOfLastUser - perPage;/* 50 - 50 = 0; 100 - 50 = 50;*/
+	const currentUsers = users.slice( indexOfFirstUser, indexOfLastUser );
 
 	const handleDataSet = (url) => {
 		setIsLoading(true);
@@ -142,5 +142,3 @@ function App() {
 };
 
 export default App;
-
-//пагинация

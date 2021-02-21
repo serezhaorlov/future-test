@@ -1,4 +1,8 @@
 .table__page-count-one{
-    margin: 0;
-    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    color: grey;
+    margin: 20px 5px;
+    outline: none;
+    cursor: pointer;
 }
